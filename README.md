@@ -13,6 +13,10 @@
 <p>A sample project for a simple HTML website that uses Java Sccript to generate a random password </p>
 
 <a href="https://github.com/mogannam/password-generator.git"> Password project on Github</a>
+
+<a href= https://mogannam.github.io/password-generator/> Deployed Project</a>
+
+<a href= git@github.com:mogannam/password-generator.git> Link to cloneable project </a>
 	
 ## Technologies
 Project is created with:
@@ -26,5 +30,7 @@ Just open the index.html file in a web browser. This is just a simple html stati
 
 ## Mockup
 <img src="https://raw.githubusercontent.com/mogannam/password-generator/main/password%20generator%20mockup.png" alt="mockup image of the password generator">
+
+
 
 
