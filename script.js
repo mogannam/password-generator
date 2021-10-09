@@ -22,8 +22,7 @@ function generatePassword(){
   var randomArrKeys = [] // an array that will be used to make random decisions based on user password criteria.
   var randomPass = ""; // the random password to return at the end
   var totalOptions = 4; // a int representing 4 possible choices, int, specialChar, uppercaseLetter, lowercaseLetter
-  // var randomCriteriaMap = {"useSpecialChar": specialCharString, "uselowerCase": alphabetLowerString, "useUpperCase": alphabetUpperString, "useNumber": useNumber }
-
+  
   passLength = window.prompt("Enter the password lenght between 8 and 128 characters")
   // check is password length is a number between 8 and 128 char. Else set it to 8.
   passLength = parseInt(passLength);  // user input is always take in as a string so you must convert it to an int if possible
@@ -64,8 +63,6 @@ function generatePassword(){
  
   // if they select no criteria at all,
   //  then generate a password with only lowercase letters
- 
-  
   if(!useNumber && !useSpecialChar && !useUpperCase && !uselowerCase)
   {
     window.alert("You selected no criteria. Password generated with lowercase letters only.")
@@ -75,13 +72,13 @@ function generatePassword(){
   
 
 
-  // while the random password is not of the password length
-  // keep randomly selecting a character from number, int, letterUpper, letterLower, special
-  randomPass = "";
-  totalOptions = 1
+
+  randomPass = ""; // the password to return at the end
+  totalOptions = 1 // the number of criteria the end user selected our of number, specialChar, upper, lower
   randomArrKeys = []
 
-  if(useSpecialChar)// if true we are allowed to use the character
+  // if true we are allowed to use the character
+  if(useSpecialChar) // adding the option to the array, makes it available for a random choice
     randomArrKeys.push("useSpecialChar");
   if(uselowerCase)
     randomArrKeys.push("uselowerCase")
@@ -91,10 +88,12 @@ function generatePassword(){
     randomArrKeys.push("useNumber")
   
   
-  
+  // as the user selected more options, update the count to match
+  // how many options we can choose from of specialChar, number, upper, lower
   totalOptions = randomArrKeys.length
   
-  console.log(randomArrKeys , totalOptions)
+  // while the random password is not of the password length
+  // keep randomly selecting a character from number, int, letterUpper, letterLower, special
   var randomChoice = getRandomInt(totalOptions);
   // while the random password built is not of the specified length
   while(randomPass.length < passLength){ 
