@@ -34,38 +34,46 @@ function generatePassword(){
 
   // validate if they want lower case letters
   // if they select no criteria at all, the default is to use lowercase letters
-  uselowerCase = window.prompt("Enter'Y\' for yes, to include lower case letters. \'N\' to leave them out. If you skip this section, they will be included. ")
+  uselowerCase = window.prompt("Enter'Y\' for yes, to include lower case letters. Anything else will skip the criteria.")
   if(uselowerCase.toUpperCase() === 'Y')
     uselowerCase = true //if they want lowercase letters
-  else if(uselowerCase === "")
-  uselowerCase = true // if they skipped the criteria include criteria
   else
     uselowerCase = false; // they don't want lower case
 
+
+  // validate if uppercase letters are used
+  useUpperCase = window.prompt("Enter'Y\' for yes, to include upper case letters. Anything else will skip the criteria.")
+  if(useUpperCase.toUpperCase() === 'Y')
+    useUpperCase =true;
+  else
+  useUpperCase = false;
   
   // validate if they want special characters
-  useSpecialChar=window.prompt("Enter \'Y\' for yes, to include special sharacters in your password.")
+  useSpecialChar=window.prompt("Enter \'Y\' for yes, to include special sharacters in your password. Anything else will skip the criteria.")
   if(useSpecialChar.toUpperCase() === 'Y')
     useSpecialChar =true;
   else
     useSpecialChar =false;
 
-  
-  
-  // validate if uppercase letters are used
-  useUpperCase = window.prompt("Enter'Y\' for yes, to include upper case letters.")
-  if(useUpperCase.toUpperCase() === 'Y')
-    useUpperCase =true;
-  else
-  useUpperCase = false;
 
-  useNumber = window.prompt("Enter'Y\' for yes, to include numbers.")
+  useNumber = window.prompt("Enter'Y\' for yes, to include numbers. Anything else will skip the criteria. ")
   if(useNumber.toUpperCase() === 'Y')
     useNumber = true
   else
     useNumber = false;
+ 
+  // if they select no criteria at all,
+  //  then generate a password with only lowercase letters
+ 
+  if(!useNumber && !useSpecialChar && !useUpperCase && !uselowerCase);
+  {
+    window.alert("You selected no criteria. Password generated with lowercase letters only.")
+    uselowerCase = true;
+  }
   console.log(`passLength: ${passLength} \n useSpecialChar: ${useSpecialChar} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useNumber: ${useNumber}`)
   
+
+
   // while the random password is not of the password length
   // keep randomly selecting a character from number, int, letterUpper, letterLower, special
   randomPass = "";
