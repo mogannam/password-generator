@@ -65,12 +65,13 @@ function generatePassword(){
   // if they select no criteria at all,
   //  then generate a password with only lowercase letters
  
-  if(!useNumber && !useSpecialChar && !useUpperCase && !uselowerCase);
+  
+  if(!useNumber && !useSpecialChar && !useUpperCase && !uselowerCase)
   {
     window.alert("You selected no criteria. Password generated with lowercase letters only.")
     uselowerCase = true;
   }
-  console.log(` passLength: ${passLength} \n useSpecialChar: ${useSpecialChar} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useNumber: ${useNumber}`)
+  console.log(` passLength: ${passLength} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useSpecialChar: ${useSpecialChar}  \n useNumber: ${useNumber}`)
   
 
 
@@ -115,7 +116,8 @@ function generatePassword(){
     else //if special char choose one of the speciaal chars
     randomPass += specialCharString[getRandomInt(specialCharStrLen)]
   }
-  console.log(randomPass)
+  //console.log(randomPass)
+  return randomPass
 
 }
 
@@ -127,7 +129,6 @@ function writePassword() {
  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  password = 'testing123'
   passwordText.value = password;
 
 }
