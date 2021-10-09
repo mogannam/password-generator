@@ -14,7 +14,7 @@
 
 <a href="https://github.com/mogannam/password-generator.git"> Password project on Github</a>
 
-<a href= https://mogannam.github.io/password-generator/> Deployed Project</a>
+<a href= https://mogannam.github.io/password-generator> Deployed Project</a>
 
 <a href= git@github.com:mogannam/password-generator.git> Link to cloneable project </a>
 	
