@@ -1,25 +1,46 @@
 // Assignment code here
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 function generatePassword(){
+  // generate a random password, based on user critera
+  // if no criteria is selected, generate a password of
+  // lowercase letters of length 8
   var passLength  = 8;
   var useSpecialChar = "false";
-  var uselowerCase = "false";
+  var uselowerCase = "true";
   var useUpperCase = "false";
   var useNumber = "false";
 
   var specialCharString= "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-  var alphabetLower = "abcdefghijklmnopqrstuvwxyz"
-  var alphabetUpper = alphabetLower.toUpperCase();
-  
+  var specialCharStrLen = specialCharString.length;
+  var alphabetLowerString = "abcdefghijklmnopqrstuvwxyz"
+  var alphabetUpperString = alphabetLowerString.toUpperCase();
+  var numbersString = "0123456789";
+  var randomArrKeys = [] // an array that will be used to make random decisions based on user password criteria.
+  var randomPass = ""; // the random password to return at the end
+  var totalOptions = 4; // a int representing 4 possible choices, int, specialChar, uppercaseLetter, lowercaseLetter
+  // var randomCriteriaMap = {"useSpecialChar": specialCharString, "uselowerCase": alphabetLowerString, "useUpperCase": alphabetUpperString, "useNumber": useNumber }
 
   passLength = window.prompt("Enter the password lenght between 8 and 128 characters")
   // check is password length is a number between 8 and 128 char. Else set it to 8.
   passLength = parseInt(passLength);  // user input is always take in as a string so you must convert it to an int if possible
-  if((passLength < 8 || passLength > 128) ||  typeof passLength != "number")
-    passLength = window.prompt (" The paossword length is not between 8 & 128 characters. Try again, otherwise 8 characters will be used")
-  passLength = parseInt(passLength);
-  if(passLength < 8 || passLength > 128 || (typeof passLength != "number"))
-    passLength = 8;
+  if((passLength >= 8 && passLength <= 128) &&  typeof passLength === "number")
+    passLength = passLength;
+  else
+    passLength =8;
+
+  // validate if they want lower case letters
+  // if they select no criteria at all, the default is to use lowercase letters
+  uselowerCase = window.prompt("Enter'Y\' for yes, to include lower case letters. \'N\' to leave them out. If you skip this section, they will be included. ")
+  if(uselowerCase.toUpperCase() === 'Y')
+    uselowerCase = true //if they want lowercase letters
+  else if(uselowerCase === "")
+  uselowerCase = true // if they skipped the criteria include criteria
+  else
+    uselowerCase = false; // they don't want lower case
 
   
   // validate if they want special characters
@@ -29,12 +50,7 @@ function generatePassword(){
   else
     useSpecialChar =false;
 
-  // validate if they want lower case letters
-  uselowerCase = window.prompt("Enter'Y\' for yes, to include lower case letters.")
-  if(uselowerCase.toUpperCase() === 'Y')
-    uselowerCase = true
-  else
-    uselowerCase = false;
+  
   
   // validate if uppercase letters are used
   useUpperCase = window.prompt("Enter'Y\' for yes, to include upper case letters.")
@@ -50,6 +66,48 @@ function generatePassword(){
     useNumber = false;
   console.log(`passLength: ${passLength} \n useSpecialChar: ${useSpecialChar} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useNumber: ${useNumber}`)
   
+  // while the random password is not of the password length
+  // keep randomly selecting a character from number, int, letterUpper, letterLower, special
+  randomPass = "";
+  totalOptions = 1
+  randomArrKeys = []
+
+  if(useSpecialChar)// if true we are allowed to use the character
+    randomArrKeys.push("useSpecialChar");
+  if(uselowerCase)
+    randomArrKeys.push("uselowerCase")
+  if(useUpperCase) 
+    randomArrKeys.push("useUpperCase")
+  if(useNumber)
+    randomArrKeys.push("useNumber")
+  
+  
+  
+  totalOptions = randomArrKeys.length
+  
+  console.log(randomArrKeys , totalOptions)
+  var randomChoice = getRandomInt(totalOptions);
+  // while the random password built is not of the specified length
+  while(randomPass.length < passLength){ 
+    // generate a random number to represent a random criteria choice
+    randomChoice = getRandomInt(totalOptions);
+    //swap the random choice as an int with its string equivelent, so
+    // that I can index the key/ value pair map
+    randomChoice = randomArrKeys[randomChoice]
+
+    //if int chose a random number between 0 and 9
+    if(randomChoice === "useNumber")
+      randomPass+= numbersString[getRandomInt(10)]
+    else if (randomChoice === "uselowerCase"){// if lowercase letter choose, 1 of 26 letters
+      randomPass+= alphabetLowerString[getRandomInt(26)]
+    }
+    else if(randomChoice === "useUpperCase"){// if uppercase, choose of 26 letters
+      randomPass += alphabetUpperString[getRandomInt(26)]
+    }
+    else //if special char choose one of the speciaal chars
+    randomPass += specialCharString[getRandomInt(specialCharStrLen)]
+  }
+  console.log(randomPass)
 
 }
 
