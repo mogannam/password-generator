@@ -25,6 +25,6 @@ Project is created with:
 Just open the index.html file in a web browser. This is just a simple html static website.
 
 ## Mockup
-<img src="https://github.com/mogannam/urban-octo-telegram/blob/main/Develop/assets/images/horiseon%20mockup.png" alt="mockup image of the password generator">
+<img src="https://raw.githubusercontent.com/mogannam/password-generator/main/password%20generator%20mockup.png" alt="mockup image of the password generator">
 
 
