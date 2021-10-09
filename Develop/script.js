@@ -70,7 +70,7 @@ function generatePassword(){
     window.alert("You selected no criteria. Password generated with lowercase letters only.")
     uselowerCase = true;
   }
-  console.log(`passLength: ${passLength} \n useSpecialChar: ${useSpecialChar} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useNumber: ${useNumber}`)
+  console.log(` passLength: ${passLength} \n useSpecialChar: ${useSpecialChar} \n uselowerCase: ${uselowerCase} \n useUpperCase ${useUpperCase} \n useNumber: ${useNumber}`)
   
 
 
